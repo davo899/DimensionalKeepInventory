@@ -16,6 +16,12 @@ public class KeepInvCommandTree {
             literal("keepinv")
             .then(RequiredArgumentBuilder.<ServerCommandSource, Identifier>
                 argument("worldID", identifier())
+                .suggests(((context, builder) -> {
+                    context.getSource().getServer().getWorldRegistryKeys().forEach(
+                        world -> builder.suggest(world.getValue().toString())
+                    );
+                    return builder.buildFuture();
+                }))
                 .then(RequiredArgumentBuilder.<ServerCommandSource, Boolean>
                     argument("value", bool())
                     .executes(new SetKeepInventoryCommand())
