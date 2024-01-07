@@ -29,7 +29,9 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
     )
     private void injectCopyFrom1(ServerPlayerEntity oldPlayer, boolean alive, CallbackInfo ci) {
         if (!alive && (
-            oldPlayer.isSpectator() || DimensionalKeepInventoryMod.WORLD_KEEP_INVENTORY_TRACKER.get(getWorld())
+            oldPlayer.isSpectator() || DimensionalKeepInventoryMod.WORLD_KEEP_INVENTORY_TRACKER.get(
+                oldPlayer.getWorld()
+            )
         )) {
             getInventory().clone(oldPlayer.getInventory());
             experienceLevel = oldPlayer.experienceLevel;
