@@ -1,0 +1,1 @@
+/keepinv \<worldID\> true/false
