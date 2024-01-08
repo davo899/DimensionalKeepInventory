@@ -28,7 +28,7 @@ public class DimensionalKeepInventoryMod extends DisableableMod {
         CommandRegistryAccess commandRegistryAccess,
         CommandManager.RegistrationEnvironment registrationEnvironment
     ) {
-        new KeepInvCommandTree().register(dispatcher);
+        new KeepInvCommandTree().register(dispatcher, this);
     }
 
     private void onServerStarted(MinecraftServer server) {
